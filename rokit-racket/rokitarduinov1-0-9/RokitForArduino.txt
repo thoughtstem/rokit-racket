@@ -1,0 +1,61 @@
+[Informations]
+This is a result of Rokit for Arduino Project(http://rokitarduino.org)
+All right reserved Robolink(http://www.robolink.co.kr)
+
+
+[Release Note]
+*v1.0.4 (2015/6/11)
+
+-New: SmartInventor-mega32_v2 보드 추가
+-Modify: Modify Library SmartInventor (Optimization)
+
+[Release Note]
+*v1.0.3 (2015/4/13)
+
+-New: Arduino Software (IDE) 1.0x & 1.62, 1.63, 1.64 Support
+-Modify: Modify Herkulex Library (Optimization)
+-Modify: Modify Dynamixel Library (Optimization)
+-Modify: Modify RFRemocon Library (Optimization)
+-Modify: Modify CLCD Library (Bug fix)
+-Modify: Modify Controller Ardu-X 200 (interrupt & timer)
+-Modify: Modify Library SmartInventor (Bug fix)
+
+[Release Note]
+*v1.0.2 (2015/3/6)
+
+-New: Add examples smartInventor step2
+-Modify: Modify Controller SmartInventor-mega32_v1 (interrupt & timer)
+-Modify: Modify examples RFRemocon (Optimization)
+-Modify: Modify Library SmartInventor (Bug fix)
+
+[Release Note]
+*v1.0.2b (2014/12/23)
+
+-New: Add Controller SmartInventor-mega32_v1
+-New: Add Library SmartInventor
+-New: Add examples smartInventor step1
+-Modify: Modify examples Herkulex (Optimization)
+-Modify: Modify examples Dynamixel (Optimization)
+-Modify: Modify Library CLCD (Bug fix)
+-Modify: Modify Controller Ardu-X 200 (interrupt & timer)
+
+[Release Note]
+*v1.0.1 (2014/8/3)
+-New: Add Controller Ardu-X 200
+-New: Add Library Dynamixel
+-New: Add Library Herkulex
+-New: Add Library IRRemocon
+-New: Add Library RFRemocon
+-New: Add Library TVRemocon
+-New: Add Library CLCD
+-New: Add Library FND
+-New: Add Library DCM
+-New: Add Library SineGait
+-New: Add ToneModule for UnityRobot
+
+
+*v1.0.0 (2014/6/18)
+-First released.
+-New: Add Controller Ardu-X 100
+-New: Add Library Servo (suppert atmega16)
+-New: Add Library UnityRobot

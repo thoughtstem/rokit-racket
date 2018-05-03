@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map OptionMotor
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DCM	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+attachPins	KEYWORD2
+write	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+CW	LITERAL1
+CCW	LITERAL1
+STOP	LITERAL1
+LOOSE	LITERAL1

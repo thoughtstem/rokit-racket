@@ -1,0 +1,1 @@
+("6.9" ("639a6cf8c9ed41e69142ec5e9b9ef2efa67d9ba7" . "e01054b2d362f1766718573d013dddb3bc0dcace") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt") (collects #"rokit-racket" #"arduino-lang.rkt"))

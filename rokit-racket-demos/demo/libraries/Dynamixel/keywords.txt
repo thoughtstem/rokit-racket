@@ -1,0 +1,68 @@
+#######################################
+# Syntax Coloring Map For Dynamixel
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Dynamixel	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+attachPins	KEYWORD2
+attachSerial	KEYWORD2
+baudnumToSpeed	KEYWORD2
+begin	KEYWORD2
+beginInstruction	KEYWORD2
+pushParam	KEYWORD2
+endInstruction	KEYWORD2
+getError	KEYWORD2
+popParam	KEYWORD2
+write	KEYWORD2
+read	KEYWORD2
+ping	KEYWORD2
+joint	KEYWORD2
+wheel	KEYWORD2
+beginPose	KEYWORD2
+addPose	KEYWORD2
+endPose	KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+BROADCAST_ID	LITERAL1
+
+INST_PING	LITERAL1
+INST_READ	LITERAL1
+INST_WRITE	LITERAL1
+INST_REG_WRITE	LITERAL1
+INST_ACTION	LITERAL1
+INST_RESET	LITERAL1
+INST_SYNC_WRITE	LITERAL1
+
+ERRBIT_VOLTAGE	LITERAL1
+ERRBIT_ANGLE	LITERAL1
+ERRBIT_OVERHEAT	LITERAL1
+ERRBIT_RANGE	LITERAL1
+ERRBIT_CHECKSUM	LITERAL1
+ERRBIT_OVERLOAD	LITERAL1
+ERRBIT_INSTRUCTION	LITERAL1
+
+COMMERROR_NONE	LITERAL1
+COMMERROR_LENGTH	LITERAL1
+COMMERROR_TIMEOUT	LITERAL1
+COMMERROR_LOST	LITERAL1
+COMMERROR_CORRUPT	LITERAL1
+COMMERROR_MISMATCH	LITERAL1
+
+POSE_POS	LITERAL1
+POSE_SPEED	LITERAL1
+POSE_POS_SPEED	LITERAL1
+POSE_SLOPE_POS	LITERAL1
+POSE_SLOPE_POS_SPEED	LITERAL1

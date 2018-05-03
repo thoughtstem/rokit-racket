@@ -1,0 +1,27 @@
+#######################################
+# Syntax Coloring Map LatchClcd
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+FND	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+setNumber	KEYWORD2
+dynamicDisplay	KEYWORD2
+leftShift	KEYWORD2
+rightShift	KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+

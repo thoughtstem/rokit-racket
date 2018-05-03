@@ -1,0 +1,35 @@
+#######################################
+# Syntax Coloring Map OptionMotor
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+TVRemoconClass	KEYWORD1
+TVRemocon	KEYWORD1
+IRremoteTV	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+receive	KEYWORD2
+customCode	keyword2
+begin	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+KEY_U	LITERAL1
+KEY_D	LITERAL1
+KEY_L	LITERAL1
+KEY_R	LITERAL1
+KEY_C	LITERAL1
+KEY_F1	LITERAL1
+KEY_F2	LITERAL1
+KEY_F3	LITERAL1
+KEY_F4	LITERAL1
+KEY_CH1	LITERAL1
+KEY_CH2	LITERAL1
+KEY_CH3	LITERAL1
+KEY_CH4	LITERAL1

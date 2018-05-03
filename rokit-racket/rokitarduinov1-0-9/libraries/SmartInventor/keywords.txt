@@ -1,0 +1,87 @@
+#######################################
+# Syntax Coloring Map OptionMotor
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SmartInventor		KEYWORD1
+SmartDroneControl	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+TVRemoconUse	KEYWORD2
+TVRemoconClose	KEYWORD2
+TVRemocon	KEYWORD2
+TVRemoconData	KEYWORD2
+DCMotorUse	KEYWORD2
+DCMotorExtension	KEYWORD2
+DCMotorClose	KEYWORD2
+DCMove	KEYWORD2
+DCMotor	KEYWORD2
+Buzz	KEYWORD2
+TimeCheckMicros	KEYWORD2
+TimeCheckMillis	KEYWORD2
+SensorCalibration	KEYWORD2
+RFRemoconUse	KEYWORD2
+RFRemoconClose	KEYWORD2
+RFRemoconData	KEYWORD2
+LedArray	KEYWORD2
+LedPerformanceNumber	KEYWORD2
+RFRemoconClose	KEYWORD2
+TVRemoconClose	KEYWORD2
+DCMotorClose	KEYWORD2
+
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+KEY_U	LITERAL1
+KEY_D	LITERAL1
+KEY_L	LITERAL1
+KEY_R	LITERAL1
+KEY_C	LITERAL1
+KEY_F1	LITERAL1
+KEY_F2	LITERAL1
+KEY_F3	LITERAL1
+KEY_F4	LITERAL1
+KEY_CH1	LITERAL1
+KEY_CH2	LITERAL1
+KEY_CH3	LITERAL1
+KEY_CH4	LITERAL1
+KEY_FL	LITERAL1
+KEY_FR	LITERAL1
+
+CW		LITERAL1
+CCW		LITERAL1
+STOP		LITERAL1
+LOOSE		LITERAL1
+
+FORWARD		LITERAL1	
+BACKWARD	LITERAL1
+LEFT 		LITERAL1
+RIGHT 		LITERAL1
+
+forward		LITERAL1 	
+backward	LITERAL1	
+stop		LITERAL1 		
+loose		LITERAL1 		
+left		LITERAL1 		
+right		LITERAL1 		
+
+M1		LITERAL1
+M2		LITERAL1
+M3		LITERAL1
+M4		LITERAL1
+
+
+RFdata		LITERAL1
+
+
+
+/**************************************************

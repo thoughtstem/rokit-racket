@@ -1,0 +1,30 @@
+#######################################
+# Syntax Coloring Map For SineGait
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SineGait	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+setPeriod	KEYWORD2
+setJoint	KEYWORD2
+getAngle	KEYWORD2
+getValue	KEYWORD2
+start	KEYWORD2
+stop	KEYWORD2
+pause	KEYWORD2
+resume	KEYWORD2
+process		KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

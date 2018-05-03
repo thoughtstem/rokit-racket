@@ -1,0 +1,48 @@
+#######################################
+# Syntax Coloring Map LatchClcd
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+CLCD	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+
+begin	KEYWORD2
+print	KEYWORD2
+write	KEYWORD2
+
+clearAll	KEYWORD2
+clearLine1	KEYWORD2
+clearLine2	KEYWORD2
+
+setCursor	KEYWORD2
+
+scrollLeft	KEYWORD2
+scrollRight	KEYWORD2
+
+display		KEYWORD2
+noDisplay	KEYWORD2
+
+cursor		KEYWORD2
+noCursor	KEYWORD2
+
+blink		KEYWORD2
+noBlink		KEYWORD2
+
+autoscroll	KEYWORD2
+noAutoscroll	KEYWORD2
+
+MakeCharacter	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+

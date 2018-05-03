@@ -1,0 +1,1423 @@
+
+boot_SmartServoBox.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000654  00003800  00003800  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  00003e54  000006e8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000010b  00800062  00800062  000006ea  2**0
+                  ALLOC
+  3 .debug_aranges 00000020  00000000  00000000  000006ea  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 0000010a  00000000  00000000  0000070a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000750  00000000  00000000  00000814  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000028b  00000000  00000000  00000f64  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000077a  00000000  00000000  000011ef  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000b0  00000000  00000000  0000196c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000001e4  00000000  00000000  00001a1c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000002dd  00000000  00000000  00001c00  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000108  00000000  00000000  00001edd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00003800 <__vectors>:
+    3800:	0c 94 2a 1c 	jmp	0x3854	; 0x3854 <__ctors_end>
+    3804:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3808:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    380c:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3810:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3814:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3818:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    381c:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3820:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3824:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3828:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    382c:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3830:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3834:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3838:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    383c:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3840:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3844:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3848:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    384c:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+    3850:	0c 94 47 1c 	jmp	0x388e	; 0x388e <__bad_interrupt>
+
+00003854 <__ctors_end>:
+    3854:	11 24       	eor	r1, r1
+    3856:	1f be       	out	0x3f, r1	; 63
+    3858:	cf e5       	ldi	r28, 0x5F	; 95
+    385a:	d4 e0       	ldi	r29, 0x04	; 4
+    385c:	de bf       	out	0x3e, r29	; 62
+    385e:	cd bf       	out	0x3d, r28	; 61
+
+00003860 <__do_copy_data>:
+    3860:	10 e0       	ldi	r17, 0x00	; 0
+    3862:	a0 e6       	ldi	r26, 0x60	; 96
+    3864:	b0 e0       	ldi	r27, 0x00	; 0
+    3866:	e4 e5       	ldi	r30, 0x54	; 84
+    3868:	fe e3       	ldi	r31, 0x3E	; 62
+    386a:	02 c0       	rjmp	.+4      	; 0x3870 <.do_copy_data_start>
+
+0000386c <.do_copy_data_loop>:
+    386c:	05 90       	lpm	r0, Z+
+    386e:	0d 92       	st	X+, r0
+
+00003870 <.do_copy_data_start>:
+    3870:	a2 36       	cpi	r26, 0x62	; 98
+    3872:	b1 07       	cpc	r27, r17
+    3874:	d9 f7       	brne	.-10     	; 0x386c <.do_copy_data_loop>
+
+00003876 <__do_clear_bss>:
+    3876:	11 e0       	ldi	r17, 0x01	; 1
+    3878:	a2 e6       	ldi	r26, 0x62	; 98
+    387a:	b0 e0       	ldi	r27, 0x00	; 0
+    387c:	01 c0       	rjmp	.+2      	; 0x3880 <.do_clear_bss_start>
+
+0000387e <.do_clear_bss_loop>:
+    387e:	1d 92       	st	X+, r1
+
+00003880 <.do_clear_bss_start>:
+    3880:	ad 36       	cpi	r26, 0x6D	; 109
+    3882:	b1 07       	cpc	r27, r17
+    3884:	e1 f7       	brne	.-8      	; 0x387e <.do_clear_bss_loop>
+    3886:	0e 94 ff 1c 	call	0x39fe	; 0x39fe <main>
+    388a:	0c 94 28 1f 	jmp	0x3e50	; 0x3e50 <_exit>
+
+0000388e <__bad_interrupt>:
+    388e:	0c 94 00 1c 	jmp	0x3800	; 0x3800 <__vectors>
+
+00003892 <puthex>:
+
+
+void puthex(char ch) {
+	char ah;
+
+	ah = ch >> 4;
+    3892:	98 2f       	mov	r25, r24
+    3894:	92 95       	swap	r25
+    3896:	9f 70       	andi	r25, 0x0F	; 15
+	if(ah >= 0x0a) {
+    3898:	9a 30       	cpi	r25, 0x0A	; 10
+    389a:	10 f0       	brcs	.+4      	; 0x38a0 <puthex+0xe>
+		ah = ah - 0x0a + 'a';
+    389c:	99 5a       	subi	r25, 0xA9	; 169
+    389e:	01 c0       	rjmp	.+2      	; 0x38a2 <puthex+0x10>
+	} else {
+		ah += '0';
+    38a0:	90 5d       	subi	r25, 0xD0	; 208
+	}
+	
+	ch &= 0x0f;
+    38a2:	8f 70       	andi	r24, 0x0F	; 15
+	if(ch >= 0x0a) {
+    38a4:	8a 30       	cpi	r24, 0x0A	; 10
+    38a6:	10 f0       	brcs	.+4      	; 0x38ac <puthex+0x1a>
+		ch = ch - 0x0a + 'a';
+    38a8:	89 5a       	subi	r24, 0xA9	; 169
+    38aa:	01 c0       	rjmp	.+2      	; 0x38ae <puthex+0x1c>
+	} else {
+		ch += '0';
+    38ac:	80 5d       	subi	r24, 0xD0	; 208
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    38ae:	5d 9b       	sbis	0x0b, 5	; 11
+    38b0:	fe cf       	rjmp	.-4      	; 0x38ae <puthex+0x1c>
+	UDR = ch;
+    38b2:	9c b9       	out	0x0c, r25	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    38b4:	5d 9b       	sbis	0x0b, 5	; 11
+    38b6:	fe cf       	rjmp	.-4      	; 0x38b4 <puthex+0x22>
+	UDR = ch;
+    38b8:	8c b9       	out	0x0c, r24	; 12
+		ch += '0';
+	}
+	
+	putch(ah);
+	putch(ch);
+}
+    38ba:	08 95       	ret
+
+000038bc <putch>:
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    38bc:	5d 9b       	sbis	0x0b, 5	; 11
+    38be:	fe cf       	rjmp	.-4      	; 0x38bc <putch>
+	UDR = ch;
+    38c0:	8c b9       	out	0x0c, r24	; 12
+#endif
+}
+    38c2:	08 95       	ret
+
+000038c4 <flash_led>:
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+    38c4:	40 e9       	ldi	r20, 0x90	; 144
+    38c6:	51 e0       	ldi	r21, 0x01	; 1
+    38c8:	13 c0       	rjmp	.+38     	; 0x38f0 <flash_led+0x2c>
+}
+
+void flash_led(uint8_t count)
+{
+	while (count--) {
+		LED_PORT |= _BV(LED);
+    38ca:	c0 9a       	sbi	0x18, 0	; 24
+    38cc:	20 ed       	ldi	r18, 0xD0	; 208
+    38ce:	37 e0       	ldi	r19, 0x07	; 7
+    38d0:	fa 01       	movw	r30, r20
+    38d2:	31 97       	sbiw	r30, 0x01	; 1
+    38d4:	f1 f7       	brne	.-4      	; 0x38d2 <flash_led+0xe>
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+    38d6:	21 50       	subi	r18, 0x01	; 1
+    38d8:	30 40       	sbci	r19, 0x00	; 0
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+    38da:	d1 f7       	brne	.-12     	; 0x38d0 <flash_led+0xc>
+		_delay_ms(200);
+		LED_PORT &= ~_BV(LED);
+    38dc:	c0 98       	cbi	0x18, 0	; 24
+    38de:	20 ed       	ldi	r18, 0xD0	; 208
+    38e0:	37 e0       	ldi	r19, 0x07	; 7
+    38e2:	fa 01       	movw	r30, r20
+    38e4:	31 97       	sbiw	r30, 0x01	; 1
+    38e6:	f1 f7       	brne	.-4      	; 0x38e4 <flash_led+0x20>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+    38e8:	21 50       	subi	r18, 0x01	; 1
+    38ea:	30 40       	sbci	r19, 0x00	; 0
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+    38ec:	d1 f7       	brne	.-12     	; 0x38e2 <flash_led+0x1e>
+    38ee:	81 50       	subi	r24, 0x01	; 1
+	}
+}
+
+void flash_led(uint8_t count)
+{
+	while (count--) {
+    38f0:	88 23       	and	r24, r24
+    38f2:	59 f7       	brne	.-42     	; 0x38ca <flash_led+0x6>
+		LED_PORT |= _BV(LED);
+		_delay_ms(200);
+		LED_PORT &= ~_BV(LED);
+		_delay_ms(200);
+	}
+}
+    38f4:	08 95       	ret
+
+000038f6 <getch>:
+#endif
+}
+
+
+char getch(void)
+{
+    38f6:	ef 92       	push	r14
+    38f8:	ff 92       	push	r15
+    38fa:	0f 93       	push	r16
+    38fc:	1f 93       	push	r17
+    38fe:	ee 24       	eor	r14, r14
+    3900:	ff 24       	eor	r15, r15
+    3902:	87 01       	movw	r16, r14
+    3904:	18 c0       	rjmp	.+48     	; 0x3936 <getch+0x40>
+	/* m8,16,32,169,8515,8535,163 */
+	uint32_t count = 0;
+	while(!(UCSRA & _BV(RXC))){
+		/* 20060803 DojoCorp:: Addon coming from the previous Bootloader*/               
+		/* HACKME:: here is a good place to count times*/
+		count++;
+    3906:	08 94       	sec
+    3908:	e1 1c       	adc	r14, r1
+    390a:	f1 1c       	adc	r15, r1
+    390c:	01 1d       	adc	r16, r1
+    390e:	11 1d       	adc	r17, r1
+		if (count > MAX_TIME_COUNT)
+    3910:	81 e4       	ldi	r24, 0x41	; 65
+    3912:	e8 16       	cp	r14, r24
+    3914:	82 e4       	ldi	r24, 0x42	; 66
+    3916:	f8 06       	cpc	r15, r24
+    3918:	8f e0       	ldi	r24, 0x0F	; 15
+    391a:	08 07       	cpc	r16, r24
+    391c:	80 e0       	ldi	r24, 0x00	; 0
+    391e:	18 07       	cpc	r17, r24
+    3920:	18 f0       	brcs	.+6      	; 0x3928 <getch+0x32>
+		flash_led(NUM_LED_FLASHES);
+    3922:	81 e0       	ldi	r24, 0x01	; 1
+    3924:	0e 94 62 1c 	call	0x38c4	; 0x38c4 <flash_led>
+        
+		if(START_SW_ON) app_start();
+    3928:	86 99       	sbic	0x10, 6	; 16
+    392a:	05 c0       	rjmp	.+10     	; 0x3936 <getch+0x40>
+    392c:	e0 91 64 00 	lds	r30, 0x0064
+    3930:	f0 91 65 00 	lds	r31, 0x0065
+    3934:	09 95       	icall
+#else
+	    
+	
+	/* m8,16,32,169,8515,8535,163 */
+	uint32_t count = 0;
+	while(!(UCSRA & _BV(RXC))){
+    3936:	5f 9b       	sbis	0x0b, 7	; 11
+    3938:	e6 cf       	rjmp	.-52     	; 0x3906 <getch+0x10>
+		if (count > MAX_TIME_COUNT)
+		flash_led(NUM_LED_FLASHES);
+        
+		if(START_SW_ON) app_start();
+	}
+	return UDR;
+    393a:	8c b1       	in	r24, 0x0c	; 12
+#endif
+}
+    393c:	1f 91       	pop	r17
+    393e:	0f 91       	pop	r16
+    3940:	ff 90       	pop	r15
+    3942:	ef 90       	pop	r14
+    3944:	08 95       	ret
+
+00003946 <nothing_response>:
+}
+
+
+void nothing_response(void)
+{
+	if (getch() == ' ') {
+    3946:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    394a:	80 32       	cpi	r24, 0x20	; 32
+    394c:	49 f4       	brne	.+18     	; 0x3960 <nothing_response+0x1a>
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    394e:	5d 9b       	sbis	0x0b, 5	; 11
+    3950:	fe cf       	rjmp	.-4      	; 0x394e <nothing_response+0x8>
+	UDR = ch;
+    3952:	84 e1       	ldi	r24, 0x14	; 20
+    3954:	8c b9       	out	0x0c, r24	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3956:	5d 9b       	sbis	0x0b, 5	; 11
+    3958:	fe cf       	rjmp	.-4      	; 0x3956 <nothing_response+0x10>
+	UDR = ch;
+    395a:	80 e1       	ldi	r24, 0x10	; 16
+    395c:	8c b9       	out	0x0c, r24	; 12
+    395e:	08 95       	ret
+{
+	if (getch() == ' ') {
+		putch(0x14);
+		putch(0x10);
+	} else {
+		if (++error_count == MAX_ERROR_COUNT)
+    3960:	80 91 63 00 	lds	r24, 0x0063
+    3964:	8f 5f       	subi	r24, 0xFF	; 255
+    3966:	80 93 63 00 	sts	0x0063, r24
+    396a:	85 30       	cpi	r24, 0x05	; 5
+    396c:	29 f4       	brne	.+10     	; 0x3978 <nothing_response+0x32>
+			app_start();
+    396e:	e0 91 64 00 	lds	r30, 0x0064
+    3972:	f0 91 65 00 	lds	r31, 0x0065
+    3976:	09 95       	icall
+    3978:	08 95       	ret
+
+0000397a <byte_response>:
+	}
+}
+
+
+void byte_response(uint8_t val)
+{
+    397a:	1f 93       	push	r17
+    397c:	18 2f       	mov	r17, r24
+	if (getch() == ' ') {
+    397e:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3982:	80 32       	cpi	r24, 0x20	; 32
+    3984:	61 f4       	brne	.+24     	; 0x399e <byte_response+0x24>
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3986:	5d 9b       	sbis	0x0b, 5	; 11
+    3988:	fe cf       	rjmp	.-4      	; 0x3986 <byte_response+0xc>
+	UDR = ch;
+    398a:	84 e1       	ldi	r24, 0x14	; 20
+    398c:	8c b9       	out	0x0c, r24	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    398e:	5d 9b       	sbis	0x0b, 5	; 11
+    3990:	fe cf       	rjmp	.-4      	; 0x398e <byte_response+0x14>
+	UDR = ch;
+    3992:	1c b9       	out	0x0c, r17	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3994:	5d 9b       	sbis	0x0b, 5	; 11
+    3996:	fe cf       	rjmp	.-4      	; 0x3994 <byte_response+0x1a>
+	UDR = ch;
+    3998:	80 e1       	ldi	r24, 0x10	; 16
+    399a:	8c b9       	out	0x0c, r24	; 12
+    399c:	0c c0       	rjmp	.+24     	; 0x39b6 <byte_response+0x3c>
+	if (getch() == ' ') {
+		putch(0x14);
+		putch(val);
+		putch(0x10);
+	} else {
+		if (++error_count == MAX_ERROR_COUNT)
+    399e:	80 91 63 00 	lds	r24, 0x0063
+    39a2:	8f 5f       	subi	r24, 0xFF	; 255
+    39a4:	80 93 63 00 	sts	0x0063, r24
+    39a8:	85 30       	cpi	r24, 0x05	; 5
+    39aa:	29 f4       	brne	.+10     	; 0x39b6 <byte_response+0x3c>
+			app_start();
+    39ac:	e0 91 64 00 	lds	r30, 0x0064
+    39b0:	f0 91 65 00 	lds	r31, 0x0065
+    39b4:	09 95       	icall
+	}
+}
+    39b6:	1f 91       	pop	r17
+    39b8:	08 95       	ret
+
+000039ba <getNch>:
+#endif
+}
+
+
+void getNch(uint8_t count)
+{
+    39ba:	1f 93       	push	r17
+    39bc:	18 2f       	mov	r17, r24
+    39be:	03 c0       	rjmp	.+6      	; 0x39c6 <getNch+0xc>
+#else
+		/* m8,16,32,169,8515,8535,163 */
+		/* 20060803 DojoCorp:: Addon coming from the previous Bootloader*/               
+		//while(!(UCSRA & _BV(RXC)));
+		//UDR;
+		getch(); // need to handle time out
+    39c0:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    39c4:	11 50       	subi	r17, 0x01	; 1
+}
+
+
+void getNch(uint8_t count)
+{
+	while(count--) {
+    39c6:	11 23       	and	r17, r17
+    39c8:	d9 f7       	brne	.-10     	; 0x39c0 <getNch+0x6>
+		//while(!(UCSRA & _BV(RXC)));
+		//UDR;
+		getch(); // need to handle time out
+#endif		
+	}
+}
+    39ca:	1f 91       	pop	r17
+    39cc:	08 95       	ret
+
+000039ce <gethexnib>:
+}
+
+
+char gethexnib(void) {
+	char a;
+	a = getch(); putch(a);
+    39ce:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    39d2:	5d 9b       	sbis	0x0b, 5	; 11
+    39d4:	fe cf       	rjmp	.-4      	; 0x39d2 <gethexnib+0x4>
+	UDR = ch;
+    39d6:	8c b9       	out	0x0c, r24	; 12
+
+
+char gethexnib(void) {
+	char a;
+	a = getch(); putch(a);
+	if(a >= 'a') {
+    39d8:	81 36       	cpi	r24, 0x61	; 97
+    39da:	10 f0       	brcs	.+4      	; 0x39e0 <gethexnib+0x12>
+		return (a - 'a' + 0x0a);
+    39dc:	87 55       	subi	r24, 0x57	; 87
+    39de:	08 95       	ret
+	} else if(a >= '0') {
+    39e0:	80 33       	cpi	r24, 0x30	; 48
+    39e2:	08 f0       	brcs	.+2      	; 0x39e6 <gethexnib+0x18>
+		return(a - '0');
+    39e4:	80 53       	subi	r24, 0x30	; 48
+	}
+	return a;
+}
+    39e6:	08 95       	ret
+
+000039e8 <gethex>:
+
+
+char gethex(void) {
+    39e8:	1f 93       	push	r17
+	return (gethexnib() << 4) + gethexnib();
+    39ea:	0e 94 e7 1c 	call	0x39ce	; 0x39ce <gethexnib>
+    39ee:	18 2f       	mov	r17, r24
+    39f0:	0e 94 e7 1c 	call	0x39ce	; 0x39ce <gethexnib>
+    39f4:	12 95       	swap	r17
+    39f6:	10 7f       	andi	r17, 0xF0	; 240
+}
+    39f8:	81 0f       	add	r24, r17
+    39fa:	1f 91       	pop	r17
+    39fc:	08 95       	ret
+
+000039fe <main>:
+void (*app_start)(void) = 0x0000;
+
+
+/* main program starts here */
+int main(void)
+{
+    39fe:	2f 92       	push	r2
+    3a00:	3f 92       	push	r3
+    3a02:	4f 92       	push	r4
+    3a04:	5f 92       	push	r5
+    3a06:	6f 92       	push	r6
+    3a08:	7f 92       	push	r7
+    3a0a:	8f 92       	push	r8
+    3a0c:	9f 92       	push	r9
+    3a0e:	af 92       	push	r10
+    3a10:	bf 92       	push	r11
+    3a12:	cf 92       	push	r12
+    3a14:	df 92       	push	r13
+    3a16:	ef 92       	push	r14
+    3a18:	ff 92       	push	r15
+    3a1a:	0f 93       	push	r16
+    3a1c:	1f 93       	push	r17
+    3a1e:	cf 93       	push	r28
+    3a20:	df 93       	push	r29
+
+	// Check if the WDT was used to reset, in which case we dont bootload and skip straight to the code. woot.
+	if (! (ch &  _BV(EXTRF))) // if its a not an external reset...
+		app_start();  // skip bootloader
+#else
+	asm volatile("nop\n\t");
+    3a22:	00 00       	nop
+	UBRRL = (((F_CPU/BAUD_RATE)/16)-1);
+	UCSRB = (1<<RXEN)|(1<<TXEN);  // enable Rx & Tx
+	UCSRC = (1<<URSEL)|(1<<UCSZ1)|(1<<UCSZ0);  // config USART; 8N1
+#else
+	/* m16,m32,m169,m8515,m8535 */
+	 UCSRA = 0x0;           
+    3a24:	1b b8       	out	0x0b, r1	; 11
+     UCSRB = 0b00011000;     // 송수신 모두 가능하게 함, 수신완료 인터럽트 disable
+    3a26:	88 e1       	ldi	r24, 0x18	; 24
+    3a28:	8a b9       	out	0x0a, r24	; 10
+     UCSRC = 0b10000110;     // 비동기 데이타 8bit 모드 
+    3a2a:	86 e8       	ldi	r24, 0x86	; 134
+    3a2c:	80 bd       	out	0x20, r24	; 32
+     UBRRH = 0;              // 비동기 일반모드 57600bps
+    3a2e:	10 bc       	out	0x20, r1	; 32
+     UBRRL = 16;
+    3a30:	80 e1       	ldi	r24, 0x10	; 16
+    3a32:	89 b9       	out	0x09, r24	; 9
+	 
+	//스마트 보드 다운로드 포함
+     DDRD |= 0b11000000;             // Hunoi보드 시리얼 통신 Enable 단자 on(PD7)
+    3a34:	81 b3       	in	r24, 0x11	; 17
+    3a36:	80 6c       	ori	r24, 0xC0	; 192
+    3a38:	81 bb       	out	0x11, r24	; 17
+     PORTD |= 0b11000000;
+    3a3a:	82 b3       	in	r24, 0x12	; 18
+    3a3c:	80 6c       	ori	r24, 0xC0	; 192
+    3a3e:	82 bb       	out	0x12, r24	; 18
+	PORTE |= _BV(PINE0);
+#endif
+
+
+	/* set LED pin as output */
+	LED_DDR |= _BV(LED);
+    3a40:	b8 9a       	sbi	0x17, 0	; 23
+	/* flash onboard LED to signal entering of bootloader */
+#if defined(__AVR_ATmega128__) || defined(__AVR_ATmega1280__)
+	// 4x for UART0, 5x for UART1
+	flash_led(NUM_LED_FLASHES + bootuart);
+#else
+	flash_led(NUM_LED_FLASHES);
+    3a42:	81 e0       	ldi	r24, 0x01	; 1
+    3a44:	0e 94 62 1c 	call	0x38c4	; 0x38c4 <flash_led>
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+	UDR = ch;
+    3a48:	14 e1       	ldi	r17, 0x14	; 20
+    3a4a:	81 2e       	mov	r8, r17
+	for (;;) {
+	            
+ 
+                  //putch('1');
+	/* get character from UART */
+	ch = getch();
+    3a4c:	be e1       	ldi	r27, 0x1E	; 30
+    3a4e:	2b 2e       	mov	r2, r27
+    3a50:	a0 e1       	ldi	r26, 0x10	; 16
+    3a52:	9a 2e       	mov	r9, r26
+    3a54:	f2 e5       	ldi	r31, 0x52	; 82
+    3a56:	7f 2e       	mov	r7, r31
+    3a58:	e0 e2       	ldi	r30, 0x20	; 32
+    3a5a:	6e 2e       	mov	r6, r30
+    3a5c:	79 e4       	ldi	r23, 0x49	; 73
+    3a5e:	57 2e       	mov	r5, r23
+    3a60:	63 e5       	ldi	r22, 0x53	; 83
+    3a62:	46 2e       	mov	r4, r22
+    3a64:	50 e5       	ldi	r21, 0x50	; 80
+    3a66:	35 2e       	mov	r3, r21
+    3a68:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+
+	/* A bunch of if...else if... gives smaller code than switch...case ! */
+
+	/* Hello is anyone home ? */ 
+	if(ch=='0') {
+    3a6c:	80 33       	cpi	r24, 0x30	; 48
+    3a6e:	09 f4       	brne	.+2      	; 0x3a72 <main+0x74>
+    3a70:	46 c0       	rjmp	.+140    	; 0x3afe <main+0x100>
+
+
+	/* Request programmer ID */
+	/* Not using PROGMEM string due to boot block in m128 being beyond 64kB boundry  */
+	/* Would need to selectively manipulate RAMPZ, and it's only 9 characters anyway so who cares.  */
+	else if(ch=='1') {
+    3a72:	81 33       	cpi	r24, 0x31	; 49
+    3a74:	11 f5       	brne	.+68     	; 0x3aba <main+0xbc>
+		if (getch() == ' ') {
+    3a76:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3a7a:	80 32       	cpi	r24, 0x20	; 32
+    3a7c:	09 f0       	breq	.+2      	; 0x3a80 <main+0x82>
+    3a7e:	c5 c1       	rjmp	.+906    	; 0x3e0a <block_done+0x116>
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3a80:	5d 9b       	sbis	0x0b, 5	; 11
+    3a82:	fe cf       	rjmp	.-4      	; 0x3a80 <main+0x82>
+	UDR = ch;
+    3a84:	8c b8       	out	0x0c, r8	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3a86:	5d 9b       	sbis	0x0b, 5	; 11
+    3a88:	fe cf       	rjmp	.-4      	; 0x3a86 <main+0x88>
+	UDR = ch;
+    3a8a:	81 e4       	ldi	r24, 0x41	; 65
+    3a8c:	8c b9       	out	0x0c, r24	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3a8e:	5d 9b       	sbis	0x0b, 5	; 11
+    3a90:	fe cf       	rjmp	.-4      	; 0x3a8e <main+0x90>
+	UDR = ch;
+    3a92:	86 e5       	ldi	r24, 0x56	; 86
+    3a94:	8c b9       	out	0x0c, r24	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3a96:	5d 9b       	sbis	0x0b, 5	; 11
+    3a98:	fe cf       	rjmp	.-4      	; 0x3a96 <main+0x98>
+	UDR = ch;
+    3a9a:	7c b8       	out	0x0c, r7	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3a9c:	5d 9b       	sbis	0x0b, 5	; 11
+    3a9e:	fe cf       	rjmp	.-4      	; 0x3a9c <main+0x9e>
+	UDR = ch;
+    3aa0:	6c b8       	out	0x0c, r6	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3aa2:	5d 9b       	sbis	0x0b, 5	; 11
+    3aa4:	fe cf       	rjmp	.-4      	; 0x3aa2 <main+0xa4>
+	UDR = ch;
+    3aa6:	5c b8       	out	0x0c, r5	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3aa8:	5d 9b       	sbis	0x0b, 5	; 11
+    3aaa:	fe cf       	rjmp	.-4      	; 0x3aa8 <main+0xaa>
+	UDR = ch;
+    3aac:	4c b8       	out	0x0c, r4	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3aae:	5d 9b       	sbis	0x0b, 5	; 11
+    3ab0:	fe cf       	rjmp	.-4      	; 0x3aae <main+0xb0>
+	UDR = ch;
+    3ab2:	3c b8       	out	0x0c, r3	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3ab4:	5d 9b       	sbis	0x0b, 5	; 11
+    3ab6:	fe cf       	rjmp	.-4      	; 0x3ab4 <main+0xb6>
+    3ab8:	a0 c1       	rjmp	.+832    	; 0x3dfa <block_done+0x106>
+		}
+	}
+
+
+	/* AVR ISP/STK500 board commands  DON'T CARE so default nothing_response */
+	else if(ch=='@') {
+    3aba:	80 34       	cpi	r24, 0x40	; 64
+    3abc:	39 f4       	brne	.+14     	; 0x3acc <main+0xce>
+		ch2 = getch();
+    3abe:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+		if (ch2>0x85) getch();
+    3ac2:	86 38       	cpi	r24, 0x86	; 134
+    3ac4:	e0 f0       	brcs	.+56     	; 0x3afe <main+0x100>
+    3ac6:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3aca:	19 c0       	rjmp	.+50     	; 0x3afe <main+0x100>
+		nothing_response();
+	}
+
+
+	/* AVR ISP/STK500 board requests */
+	else if(ch=='A') {
+    3acc:	81 34       	cpi	r24, 0x41	; 65
+    3ace:	91 f4       	brne	.+36     	; 0x3af4 <main+0xf6>
+		ch2 = getch();
+    3ad0:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+		if(ch2==0x80) byte_response(HW_VER);		// Hardware version
+    3ad4:	80 38       	cpi	r24, 0x80	; 128
+    3ad6:	11 f4       	brne	.+4      	; 0x3adc <main+0xde>
+    3ad8:	82 e0       	ldi	r24, 0x02	; 2
+    3ada:	94 c1       	rjmp	.+808    	; 0x3e04 <block_done+0x110>
+		else if(ch2==0x81) byte_response(SW_MAJOR);	// Software major version
+    3adc:	81 38       	cpi	r24, 0x81	; 129
+    3ade:	11 f4       	brne	.+4      	; 0x3ae4 <main+0xe6>
+    3ae0:	81 e0       	ldi	r24, 0x01	; 1
+    3ae2:	90 c1       	rjmp	.+800    	; 0x3e04 <block_done+0x110>
+		else if(ch2==0x82) byte_response(SW_MINOR);	// Software minor version
+    3ae4:	82 38       	cpi	r24, 0x82	; 130
+    3ae6:	11 f4       	brne	.+4      	; 0x3aec <main+0xee>
+    3ae8:	80 e1       	ldi	r24, 0x10	; 16
+    3aea:	8c c1       	rjmp	.+792    	; 0x3e04 <block_done+0x110>
+		else if(ch2==0x98) byte_response(0x03);		// Unknown but seems to be required by avr studio 3.56
+    3aec:	88 39       	cpi	r24, 0x98	; 152
+    3aee:	09 f0       	breq	.+2      	; 0x3af2 <main+0xf4>
+    3af0:	88 c1       	rjmp	.+784    	; 0x3e02 <block_done+0x10e>
+    3af2:	32 c0       	rjmp	.+100    	; 0x3b58 <main+0x15a>
+		else byte_response(0x00);				// Covers various unnecessary responses we don't care about
+	}
+
+
+	/* Device Parameters  DON'T CARE, DEVICE IS FIXED  */
+	else if(ch=='B') {
+    3af4:	82 34       	cpi	r24, 0x42	; 66
+    3af6:	31 f4       	brne	.+12     	; 0x3b04 <main+0x106>
+		getNch(20);
+    3af8:	84 e1       	ldi	r24, 0x14	; 20
+    3afa:	0e 94 dd 1c 	call	0x39ba	; 0x39ba <getNch>
+		nothing_response();
+    3afe:	0e 94 a3 1c 	call	0x3946	; 0x3946 <nothing_response>
+    3b02:	b2 cf       	rjmp	.-156    	; 0x3a68 <main+0x6a>
+	}
+
+
+	/* Parallel programming stuff  DON'T CARE  */
+	else if(ch=='E') {
+    3b04:	85 34       	cpi	r24, 0x45	; 69
+    3b06:	11 f4       	brne	.+4      	; 0x3b0c <main+0x10e>
+		getNch(5);
+    3b08:	85 e0       	ldi	r24, 0x05	; 5
+    3b0a:	f7 cf       	rjmp	.-18     	; 0x3afa <main+0xfc>
+	}
+
+
+	/* P: Enter programming mode  */
+	/* R: Erase device, don't care as we will erase one page at a time anyway.  */
+	else if(ch=='P' || ch=='R') {
+    3b0c:	80 35       	cpi	r24, 0x50	; 80
+    3b0e:	b9 f3       	breq	.-18     	; 0x3afe <main+0x100>
+    3b10:	82 35       	cpi	r24, 0x52	; 82
+    3b12:	a9 f3       	breq	.-22     	; 0x3afe <main+0x100>
+		nothing_response();
+	}
+
+
+	/* Leave programming mode  */
+	else if(ch=='Q') {
+    3b14:	81 35       	cpi	r24, 0x51	; 81
+    3b16:	99 f3       	breq	.-26     	; 0x3afe <main+0x100>
+
+
+	/* Set address, little endian. EEPROM in bytes, FLASH in words  */
+	/* Perhaps extra address bytes may be added in future to support > 128kB FLASH.  */
+	/* This might explain why little endian was used here, big endian used everywhere else.  */
+	else if(ch=='U') {
+    3b18:	85 35       	cpi	r24, 0x55	; 85
+    3b1a:	49 f4       	brne	.+18     	; 0x3b2e <main+0x130>
+		address.byte[0] = getch();
+    3b1c:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3b20:	80 93 66 00 	sts	0x0066, r24
+		address.byte[1] = getch();
+    3b24:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3b28:	80 93 67 00 	sts	0x0067, r24
+    3b2c:	e8 cf       	rjmp	.-48     	; 0x3afe <main+0x100>
+		nothing_response();
+	}
+
+
+	/* Universal SPI programming command, disabled.  Would be used for fuses and lock bits.  */
+	else if(ch=='V') {
+    3b2e:	86 35       	cpi	r24, 0x56	; 86
+    3b30:	c9 f4       	brne	.+50     	; 0x3b64 <main+0x166>
+		if (getch() == 0x30) {
+    3b32:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3b36:	80 33       	cpi	r24, 0x30	; 48
+    3b38:	89 f4       	brne	.+34     	; 0x3b5c <main+0x15e>
+			getch();
+    3b3a:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+			ch = getch();
+    3b3e:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3b42:	18 2f       	mov	r17, r24
+			getch();
+    3b44:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+			if (ch == 0) {
+    3b48:	11 23       	and	r17, r17
+    3b4a:	11 f4       	brne	.+4      	; 0x3b50 <main+0x152>
+				byte_response(SIG1);
+    3b4c:	8e e1       	ldi	r24, 0x1E	; 30
+    3b4e:	5a c1       	rjmp	.+692    	; 0x3e04 <block_done+0x110>
+			} else if (ch == 1) {
+    3b50:	11 30       	cpi	r17, 0x01	; 1
+    3b52:	11 f4       	brne	.+4      	; 0x3b58 <main+0x15a>
+				byte_response(SIG2); 
+    3b54:	84 e9       	ldi	r24, 0x94	; 148
+    3b56:	56 c1       	rjmp	.+684    	; 0x3e04 <block_done+0x110>
+			} else {
+				byte_response(SIG3);
+    3b58:	83 e0       	ldi	r24, 0x03	; 3
+    3b5a:	54 c1       	rjmp	.+680    	; 0x3e04 <block_done+0x110>
+			} 
+		} else {
+			getNch(3);
+    3b5c:	83 e0       	ldi	r24, 0x03	; 3
+    3b5e:	0e 94 dd 1c 	call	0x39ba	; 0x39ba <getNch>
+    3b62:	4f c1       	rjmp	.+670    	; 0x3e02 <block_done+0x10e>
+		}
+	}
+
+
+	/* Write memory, length is big endian and is in bytes  */
+	else if(ch=='d') {
+    3b64:	84 36       	cpi	r24, 0x64	; 100
+    3b66:	09 f0       	breq	.+2      	; 0x3b6a <main+0x16c>
+    3b68:	cc c0       	rjmp	.+408    	; 0x3d02 <block_done+0xe>
+		length.byte[1] = getch();
+    3b6a:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3b6e:	80 93 69 01 	sts	0x0169, r24
+		length.byte[0] = getch();
+    3b72:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3b76:	80 93 68 01 	sts	0x0168, r24
+		flags.eeprom = 0;
+    3b7a:	80 91 6c 01 	lds	r24, 0x016C
+    3b7e:	8e 7f       	andi	r24, 0xFE	; 254
+    3b80:	80 93 6c 01 	sts	0x016C, r24
+		if (getch() == 'E') flags.eeprom = 1;
+    3b84:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3b88:	85 34       	cpi	r24, 0x45	; 69
+    3b8a:	29 f4       	brne	.+10     	; 0x3b96 <main+0x198>
+    3b8c:	80 91 6c 01 	lds	r24, 0x016C
+    3b90:	81 60       	ori	r24, 0x01	; 1
+    3b92:	80 93 6c 01 	sts	0x016C, r24
+    3b96:	00 e0       	ldi	r16, 0x00	; 0
+    3b98:	10 e0       	ldi	r17, 0x00	; 0
+    3b9a:	08 c0       	rjmp	.+16     	; 0x3bac <main+0x1ae>
+		for (w=0;w<length.word;w++) {
+			buff[w] = getch();	                        // Store data in buffer, can't keep up with serial data stream whilst programming pages
+    3b9c:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3ba0:	f8 01       	movw	r30, r16
+    3ba2:	e8 59       	subi	r30, 0x98	; 152
+    3ba4:	ff 4f       	sbci	r31, 0xFF	; 255
+    3ba6:	80 83       	st	Z, r24
+	else if(ch=='d') {
+		length.byte[1] = getch();
+		length.byte[0] = getch();
+		flags.eeprom = 0;
+		if (getch() == 'E') flags.eeprom = 1;
+		for (w=0;w<length.word;w++) {
+    3ba8:	0f 5f       	subi	r16, 0xFF	; 255
+    3baa:	1f 4f       	sbci	r17, 0xFF	; 255
+    3bac:	80 91 68 01 	lds	r24, 0x0168
+    3bb0:	90 91 69 01 	lds	r25, 0x0169
+    3bb4:	08 17       	cp	r16, r24
+    3bb6:	19 07       	cpc	r17, r25
+    3bb8:	88 f3       	brcs	.-30     	; 0x3b9c <main+0x19e>
+			buff[w] = getch();	                        // Store data in buffer, can't keep up with serial data stream whilst programming pages
+		}
+		if (getch() == ' ') {
+    3bba:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3bbe:	80 32       	cpi	r24, 0x20	; 32
+    3bc0:	09 f0       	breq	.+2      	; 0x3bc4 <main+0x1c6>
+    3bc2:	23 c1       	rjmp	.+582    	; 0x3e0a <block_done+0x116>
+			if (flags.eeprom) {		                //Write to EEPROM one byte at a time
+    3bc4:	80 91 6c 01 	lds	r24, 0x016C
+    3bc8:	80 ff       	sbrs	r24, 0
+    3bca:	2a c0       	rjmp	.+84     	; 0x3c20 <main+0x222>
+				address.word <<= 1;
+    3bcc:	80 91 66 00 	lds	r24, 0x0066
+    3bd0:	90 91 67 00 	lds	r25, 0x0067
+    3bd4:	88 0f       	add	r24, r24
+    3bd6:	99 1f       	adc	r25, r25
+    3bd8:	90 93 67 00 	sts	0x0067, r25
+    3bdc:	80 93 66 00 	sts	0x0066, r24
+    3be0:	00 e0       	ldi	r16, 0x00	; 0
+    3be2:	10 e0       	ldi	r17, 0x00	; 0
+    3be4:	15 c0       	rjmp	.+42     	; 0x3c10 <main+0x212>
+					EEAR = (uint16_t)(void *)address.word;
+					EEDR = buff[w];
+					EECR |= (1<<EEMPE);
+					EECR |= (1<<EEPE);
+#else
+					eeprom_write_byte((void *)address.word,buff[w]);
+    3be6:	f8 01       	movw	r30, r16
+    3be8:	e8 59       	subi	r30, 0x98	; 152
+    3bea:	ff 4f       	sbci	r31, 0xFF	; 255
+    3bec:	80 91 66 00 	lds	r24, 0x0066
+    3bf0:	90 91 67 00 	lds	r25, 0x0067
+    3bf4:	60 81       	ld	r22, Z
+    3bf6:	0e 94 1b 1f 	call	0x3e36	; 0x3e36 <__eewr_byte_m16>
+#endif
+					address.word++;
+    3bfa:	80 91 66 00 	lds	r24, 0x0066
+    3bfe:	90 91 67 00 	lds	r25, 0x0067
+    3c02:	01 96       	adiw	r24, 0x01	; 1
+    3c04:	90 93 67 00 	sts	0x0067, r25
+    3c08:	80 93 66 00 	sts	0x0066, r24
+			buff[w] = getch();	                        // Store data in buffer, can't keep up with serial data stream whilst programming pages
+		}
+		if (getch() == ' ') {
+			if (flags.eeprom) {		                //Write to EEPROM one byte at a time
+				address.word <<= 1;
+				for(w=0;w<length.word;w++) {
+    3c0c:	0f 5f       	subi	r16, 0xFF	; 255
+    3c0e:	1f 4f       	sbci	r17, 0xFF	; 255
+    3c10:	80 91 68 01 	lds	r24, 0x0168
+    3c14:	90 91 69 01 	lds	r25, 0x0169
+    3c18:	08 17       	cp	r16, r24
+    3c1a:	19 07       	cpc	r17, r25
+    3c1c:	20 f3       	brcs	.-56     	; 0x3be6 <main+0x1e8>
+    3c1e:	6b c0       	rjmp	.+214    	; 0x3cf6 <block_done+0x2>
+#endif
+					address.word++;
+				}			
+			}
+			else {					        //Write to FLASH one page at a time
+				if (address.byte[1]>127) address_high = 0x01;	//Only possible with m128, m256 will need 3rd address byte. FIXME
+    3c20:	80 91 67 00 	lds	r24, 0x0067
+    3c24:	88 23       	and	r24, r24
+    3c26:	88 0f       	add	r24, r24
+    3c28:	88 0b       	sbc	r24, r24
+    3c2a:	81 70       	andi	r24, 0x01	; 1
+    3c2c:	80 93 6b 01 	sts	0x016B, r24
+				else address_high = 0x00;
+#if defined(__AVR_ATmega128__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__)
+				RAMPZ = address_high;
+#endif
+				address.word = address.word << 1;	        //address * 2 -> byte location
+    3c30:	80 91 66 00 	lds	r24, 0x0066
+    3c34:	90 91 67 00 	lds	r25, 0x0067
+    3c38:	88 0f       	add	r24, r24
+    3c3a:	99 1f       	adc	r25, r25
+    3c3c:	90 93 67 00 	sts	0x0067, r25
+    3c40:	80 93 66 00 	sts	0x0066, r24
+				/* if ((length.byte[0] & 0x01) == 0x01) length.word++;	//Even up an odd number of bytes */
+				if ((length.byte[0] & 0x01)) length.word++;	//Even up an odd number of bytes
+    3c44:	80 91 68 01 	lds	r24, 0x0168
+    3c48:	80 ff       	sbrs	r24, 0
+    3c4a:	09 c0       	rjmp	.+18     	; 0x3c5e <main+0x260>
+    3c4c:	80 91 68 01 	lds	r24, 0x0168
+    3c50:	90 91 69 01 	lds	r25, 0x0169
+    3c54:	01 96       	adiw	r24, 0x01	; 1
+    3c56:	90 93 69 01 	sts	0x0169, r25
+    3c5a:	80 93 68 01 	sts	0x0168, r24
+				cli();					//Disable interrupts, just to be sure
+    3c5e:	f8 94       	cli
+#if defined(EEPE)
+				while(bit_is_set(EECR,EEPE));			//Wait for previous EEPROM writes to complete
+#else
+				while(bit_is_set(EECR,EEWE));			//Wait for previous EEPROM writes to complete
+    3c60:	e1 99       	sbic	0x1c, 1	; 28
+    3c62:	fe cf       	rjmp	.-4      	; 0x3c60 <main+0x262>
+#endif
+				asm volatile(
+    3c64:	11 27       	eor	r17, r17
+    3c66:	e0 91 66 00 	lds	r30, 0x0066
+    3c6a:	f0 91 67 00 	lds	r31, 0x0067
+    3c6e:	c8 e6       	ldi	r28, 0x68	; 104
+    3c70:	d0 e0       	ldi	r29, 0x00	; 0
+    3c72:	80 91 68 01 	lds	r24, 0x0168
+    3c76:	90 91 69 01 	lds	r25, 0x0169
+
+00003c7a <length_loop>:
+    3c7a:	10 30       	cpi	r17, 0x00	; 0
+    3c7c:	91 f4       	brne	.+36     	; 0x3ca2 <no_page_erase>
+
+00003c7e <wait_spm1>:
+    3c7e:	00 91 57 00 	lds	r16, 0x0057
+    3c82:	01 70       	andi	r16, 0x01	; 1
+    3c84:	01 30       	cpi	r16, 0x01	; 1
+    3c86:	d9 f3       	breq	.-10     	; 0x3c7e <wait_spm1>
+    3c88:	03 e0       	ldi	r16, 0x03	; 3
+    3c8a:	00 93 57 00 	sts	0x0057, r16
+    3c8e:	e8 95       	spm
+
+00003c90 <wait_spm2>:
+    3c90:	00 91 57 00 	lds	r16, 0x0057
+    3c94:	01 70       	andi	r16, 0x01	; 1
+    3c96:	01 30       	cpi	r16, 0x01	; 1
+    3c98:	d9 f3       	breq	.-10     	; 0x3c90 <wait_spm2>
+    3c9a:	01 e1       	ldi	r16, 0x11	; 17
+    3c9c:	00 93 57 00 	sts	0x0057, r16
+    3ca0:	e8 95       	spm
+
+00003ca2 <no_page_erase>:
+    3ca2:	09 90       	ld	r0, Y+
+    3ca4:	19 90       	ld	r1, Y+
+
+00003ca6 <wait_spm3>:
+    3ca6:	00 91 57 00 	lds	r16, 0x0057
+    3caa:	01 70       	andi	r16, 0x01	; 1
+    3cac:	01 30       	cpi	r16, 0x01	; 1
+    3cae:	d9 f3       	breq	.-10     	; 0x3ca6 <wait_spm3>
+    3cb0:	01 e0       	ldi	r16, 0x01	; 1
+    3cb2:	00 93 57 00 	sts	0x0057, r16
+    3cb6:	e8 95       	spm
+    3cb8:	13 95       	inc	r17
+    3cba:	10 34       	cpi	r17, 0x40	; 64
+    3cbc:	98 f0       	brcs	.+38     	; 0x3ce4 <same_page>
+
+00003cbe <write_page>:
+    3cbe:	11 27       	eor	r17, r17
+
+00003cc0 <wait_spm4>:
+    3cc0:	00 91 57 00 	lds	r16, 0x0057
+    3cc4:	01 70       	andi	r16, 0x01	; 1
+    3cc6:	01 30       	cpi	r16, 0x01	; 1
+    3cc8:	d9 f3       	breq	.-10     	; 0x3cc0 <wait_spm4>
+    3cca:	05 e0       	ldi	r16, 0x05	; 5
+    3ccc:	00 93 57 00 	sts	0x0057, r16
+    3cd0:	e8 95       	spm
+
+00003cd2 <wait_spm5>:
+    3cd2:	00 91 57 00 	lds	r16, 0x0057
+    3cd6:	01 70       	andi	r16, 0x01	; 1
+    3cd8:	01 30       	cpi	r16, 0x01	; 1
+    3cda:	d9 f3       	breq	.-10     	; 0x3cd2 <wait_spm5>
+    3cdc:	01 e1       	ldi	r16, 0x11	; 17
+    3cde:	00 93 57 00 	sts	0x0057, r16
+    3ce2:	e8 95       	spm
+
+00003ce4 <same_page>:
+    3ce4:	32 96       	adiw	r30, 0x02	; 2
+    3ce6:	02 97       	sbiw	r24, 0x02	; 2
+    3ce8:	09 f0       	breq	.+2      	; 0x3cec <final_write>
+    3cea:	c7 cf       	rjmp	.-114    	; 0x3c7a <length_loop>
+
+00003cec <final_write>:
+    3cec:	10 30       	cpi	r17, 0x00	; 0
+    3cee:	11 f0       	breq	.+4      	; 0x3cf4 <block_done>
+    3cf0:	02 96       	adiw	r24, 0x02	; 2
+    3cf2:	e5 cf       	rjmp	.-54     	; 0x3cbe <write_page>
+
+00003cf4 <block_done>:
+    3cf4:	11 24       	eor	r1, r1
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3cf6:	5d 9b       	sbis	0x0b, 5	; 11
+    3cf8:	fe cf       	rjmp	.-4      	; 0x3cf6 <block_done+0x2>
+	UDR = ch;
+    3cfa:	8c b8       	out	0x0c, r8	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3cfc:	5d 9b       	sbis	0x0b, 5	; 11
+    3cfe:	fe cf       	rjmp	.-4      	; 0x3cfc <block_done+0x8>
+    3d00:	7c c0       	rjmp	.+248    	; 0x3dfa <block_done+0x106>
+		}		
+	}
+
+
+	/* Read memory block mode, length is big endian.  */
+	else if(ch=='t') {
+    3d02:	84 37       	cpi	r24, 0x74	; 116
+    3d04:	09 f0       	breq	.+2      	; 0x3d08 <block_done+0x14>
+    3d06:	63 c0       	rjmp	.+198    	; 0x3dce <block_done+0xda>
+		length.byte[1] = getch();
+    3d08:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3d0c:	80 93 69 01 	sts	0x0169, r24
+		length.byte[0] = getch();
+    3d10:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3d14:	80 93 68 01 	sts	0x0168, r24
+#if defined(__AVR_ATmega128__) || defined(__AVR_ATmega1280__)
+		if (address.word>0x7FFF) flags.rampz = 1;		// No go with m256, FIXME
+		else flags.rampz = 0;
+#endif
+		address.word = address.word << 1;	        // address * 2 -> byte location
+    3d18:	80 91 66 00 	lds	r24, 0x0066
+    3d1c:	90 91 67 00 	lds	r25, 0x0067
+    3d20:	88 0f       	add	r24, r24
+    3d22:	99 1f       	adc	r25, r25
+    3d24:	90 93 67 00 	sts	0x0067, r25
+    3d28:	80 93 66 00 	sts	0x0066, r24
+		if (getch() == 'E') flags.eeprom = 1;
+    3d2c:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3d30:	90 91 6c 01 	lds	r25, 0x016C
+    3d34:	85 34       	cpi	r24, 0x45	; 69
+    3d36:	11 f4       	brne	.+4      	; 0x3d3c <block_done+0x48>
+    3d38:	91 60       	ori	r25, 0x01	; 1
+    3d3a:	01 c0       	rjmp	.+2      	; 0x3d3e <block_done+0x4a>
+		else flags.eeprom = 0;
+    3d3c:	9e 7f       	andi	r25, 0xFE	; 254
+    3d3e:	90 93 6c 01 	sts	0x016C, r25
+		if (getch() == ' ') {		                // Command terminator
+    3d42:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3d46:	80 32       	cpi	r24, 0x20	; 32
+    3d48:	09 f0       	breq	.+2      	; 0x3d4c <block_done+0x58>
+    3d4a:	8e ce       	rjmp	.-740    	; 0x3a68 <main+0x6a>
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3d4c:	5d 9b       	sbis	0x0b, 5	; 11
+    3d4e:	fe cf       	rjmp	.-4      	; 0x3d4c <block_done+0x58>
+	UDR = ch;
+    3d50:	8c b8       	out	0x0c, r8	; 12
+		address.word = address.word << 1;	        // address * 2 -> byte location
+		if (getch() == 'E') flags.eeprom = 1;
+		else flags.eeprom = 0;
+		if (getch() == ' ') {		                // Command terminator
+			putch(0x14);
+			for (w=0;w < length.word;w++) {		        // Can handle odd and even lengths okay
+    3d52:	c0 90 68 01 	lds	r12, 0x0168
+    3d56:	d0 90 69 01 	lds	r13, 0x0169
+				if (flags.eeprom) {	                        // Byte access EEPROM read
+    3d5a:	80 91 6c 01 	lds	r24, 0x016C
+    3d5e:	aa 24       	eor	r10, r10
+    3d60:	a3 94       	inc	r10
+    3d62:	a8 22       	and	r10, r24
+#endif
+					address.word++;
+				}
+				else {
+
+					if (!flags.rampz) putch(pgm_read_byte_near(address.word));
+    3d64:	92 e0       	ldi	r25, 0x02	; 2
+    3d66:	b9 2e       	mov	r11, r25
+    3d68:	b8 22       	and	r11, r24
+    3d6a:	ee 24       	eor	r14, r14
+    3d6c:	ff 24       	eor	r15, r15
+    3d6e:	29 c0       	rjmp	.+82     	; 0x3dc2 <block_done+0xce>
+		if (getch() == 'E') flags.eeprom = 1;
+		else flags.eeprom = 0;
+		if (getch() == ' ') {		                // Command terminator
+			putch(0x14);
+			for (w=0;w < length.word;w++) {		        // Can handle odd and even lengths okay
+				if (flags.eeprom) {	                        // Byte access EEPROM read
+    3d70:	aa 20       	and	r10, r10
+    3d72:	89 f0       	breq	.+34     	; 0x3d96 <block_done+0xa2>
+					while(EECR & (1<<EEPE));
+					EEAR = (uint16_t)(void *)address.word;
+					EECR |= (1<<EERE);
+					putch(EEDR);
+#else
+					putch(eeprom_read_byte((void *)address.word));
+    3d74:	00 91 66 00 	lds	r16, 0x0066
+    3d78:	10 91 67 00 	lds	r17, 0x0067
+    3d7c:	c8 01       	movw	r24, r16
+    3d7e:	0e 94 13 1f 	call	0x3e26	; 0x3e26 <__eerd_byte_m16>
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3d82:	5d 9b       	sbis	0x0b, 5	; 11
+    3d84:	fe cf       	rjmp	.-4      	; 0x3d82 <block_done+0x8e>
+	UDR = ch;
+    3d86:	8c b9       	out	0x0c, r24	; 12
+					EECR |= (1<<EERE);
+					putch(EEDR);
+#else
+					putch(eeprom_read_byte((void *)address.word));
+#endif
+					address.word++;
+    3d88:	0f 5f       	subi	r16, 0xFF	; 255
+    3d8a:	1f 4f       	sbci	r17, 0xFF	; 255
+    3d8c:	10 93 67 00 	sts	0x0067, r17
+    3d90:	00 93 66 00 	sts	0x0066, r16
+    3d94:	13 c0       	rjmp	.+38     	; 0x3dbc <block_done+0xc8>
+				}
+				else {
+
+					if (!flags.rampz) putch(pgm_read_byte_near(address.word));
+    3d96:	bb 20       	and	r11, r11
+    3d98:	41 f4       	brne	.+16     	; 0x3daa <block_done+0xb6>
+    3d9a:	e0 91 66 00 	lds	r30, 0x0066
+    3d9e:	f0 91 67 00 	lds	r31, 0x0067
+    3da2:	84 91       	lpm	r24, Z+
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3da4:	5d 9b       	sbis	0x0b, 5	; 11
+    3da6:	fe cf       	rjmp	.-4      	; 0x3da4 <block_done+0xb0>
+	UDR = ch;
+    3da8:	8c b9       	out	0x0c, r24	; 12
+					if (!flags.rampz) putch(pgm_read_byte_near(address.word));
+#if defined(__AVR_ATmega128__) || defined(__AVR_ATmega1280__)
+					else putch(pgm_read_byte_far(address.word + 0x10000));
+					// Hmmmm, yuck  FIXME when m256 arrvies
+#endif
+					address.word++;
+    3daa:	80 91 66 00 	lds	r24, 0x0066
+    3dae:	90 91 67 00 	lds	r25, 0x0067
+    3db2:	01 96       	adiw	r24, 0x01	; 1
+    3db4:	90 93 67 00 	sts	0x0067, r25
+    3db8:	80 93 66 00 	sts	0x0066, r24
+		address.word = address.word << 1;	        // address * 2 -> byte location
+		if (getch() == 'E') flags.eeprom = 1;
+		else flags.eeprom = 0;
+		if (getch() == ' ') {		                // Command terminator
+			putch(0x14);
+			for (w=0;w < length.word;w++) {		        // Can handle odd and even lengths okay
+    3dbc:	08 94       	sec
+    3dbe:	e1 1c       	adc	r14, r1
+    3dc0:	f1 1c       	adc	r15, r1
+    3dc2:	ec 14       	cp	r14, r12
+    3dc4:	fd 04       	cpc	r15, r13
+    3dc6:	a0 f2       	brcs	.-88     	; 0x3d70 <block_done+0x7c>
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3dc8:	5d 9b       	sbis	0x0b, 5	; 11
+    3dca:	fe cf       	rjmp	.-4      	; 0x3dc8 <block_done+0xd4>
+    3dcc:	16 c0       	rjmp	.+44     	; 0x3dfa <block_done+0x106>
+		}
+	}
+
+
+	/* Get device signature bytes  */
+	else if(ch=='u') {
+    3dce:	85 37       	cpi	r24, 0x75	; 117
+    3dd0:	b1 f4       	brne	.+44     	; 0x3dfe <block_done+0x10a>
+		if (getch() == ' ') {
+    3dd2:	0e 94 7b 1c 	call	0x38f6	; 0x38f6 <getch>
+    3dd6:	80 32       	cpi	r24, 0x20	; 32
+    3dd8:	c1 f4       	brne	.+48     	; 0x3e0a <block_done+0x116>
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3dda:	5d 9b       	sbis	0x0b, 5	; 11
+    3ddc:	fe cf       	rjmp	.-4      	; 0x3dda <block_done+0xe6>
+	UDR = ch;
+    3dde:	8c b8       	out	0x0c, r8	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3de0:	5d 9b       	sbis	0x0b, 5	; 11
+    3de2:	fe cf       	rjmp	.-4      	; 0x3de0 <block_done+0xec>
+	UDR = ch;
+    3de4:	2c b8       	out	0x0c, r2	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3de6:	5d 9b       	sbis	0x0b, 5	; 11
+    3de8:	fe cf       	rjmp	.-4      	; 0x3de6 <block_done+0xf2>
+	UDR = ch;
+    3dea:	84 e9       	ldi	r24, 0x94	; 148
+    3dec:	8c b9       	out	0x0c, r24	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3dee:	5d 9b       	sbis	0x0b, 5	; 11
+    3df0:	fe cf       	rjmp	.-4      	; 0x3dee <block_done+0xfa>
+	UDR = ch;
+    3df2:	83 e0       	ldi	r24, 0x03	; 3
+    3df4:	8c b9       	out	0x0c, r24	; 12
+#elif defined(__AVR_ATmega168__)  || defined(__AVR_ATmega328P__)
+	while (!(UCSR0A & _BV(UDRE0)));
+	UDR0 = ch;
+#else
+	/* m8,16,32,169,8515,8535,163 */
+	while (!(UCSRA & _BV(UDRE)));
+    3df6:	5d 9b       	sbis	0x0b, 5	; 11
+    3df8:	fe cf       	rjmp	.-4      	; 0x3df6 <block_done+0x102>
+	UDR = ch;
+    3dfa:	9c b8       	out	0x0c, r9	; 12
+    3dfc:	35 ce       	rjmp	.-918    	; 0x3a68 <main+0x6a>
+		}
+	}
+
+
+	/* Read oscillator calibration byte */
+	else if(ch=='v') {
+    3dfe:	86 37       	cpi	r24, 0x76	; 118
+    3e00:	21 f4       	brne	.+8      	; 0x3e0a <block_done+0x116>
+		byte_response(0x00);
+    3e02:	80 e0       	ldi	r24, 0x00	; 0
+    3e04:	0e 94 bd 1c 	call	0x397a	; 0x397a <byte_response>
+    3e08:	2f ce       	rjmp	.-930    	; 0x3a68 <main+0x6a>
+		}
+		}
+	}
+	/* end of monitor */
+#endif
+	else if (++error_count == MAX_ERROR_COUNT) {
+    3e0a:	80 91 63 00 	lds	r24, 0x0063
+    3e0e:	8f 5f       	subi	r24, 0xFF	; 255
+    3e10:	80 93 63 00 	sts	0x0063, r24
+    3e14:	85 30       	cpi	r24, 0x05	; 5
+    3e16:	09 f0       	breq	.+2      	; 0x3e1a <block_done+0x126>
+    3e18:	27 ce       	rjmp	.-946    	; 0x3a68 <main+0x6a>
+		app_start();
+    3e1a:	e0 91 64 00 	lds	r30, 0x0064
+    3e1e:	f0 91 65 00 	lds	r31, 0x0065
+    3e22:	09 95       	icall
+    3e24:	21 ce       	rjmp	.-958    	; 0x3a68 <main+0x6a>
+
+00003e26 <__eerd_byte_m16>:
+    3e26:	e1 99       	sbic	0x1c, 1	; 28
+    3e28:	fe cf       	rjmp	.-4      	; 0x3e26 <__eerd_byte_m16>
+    3e2a:	9f bb       	out	0x1f, r25	; 31
+    3e2c:	8e bb       	out	0x1e, r24	; 30
+    3e2e:	e0 9a       	sbi	0x1c, 0	; 28
+    3e30:	99 27       	eor	r25, r25
+    3e32:	8d b3       	in	r24, 0x1d	; 29
+    3e34:	08 95       	ret
+
+00003e36 <__eewr_byte_m16>:
+    3e36:	26 2f       	mov	r18, r22
+
+00003e38 <__eewr_r18_m16>:
+    3e38:	e1 99       	sbic	0x1c, 1	; 28
+    3e3a:	fe cf       	rjmp	.-4      	; 0x3e38 <__eewr_r18_m16>
+    3e3c:	9f bb       	out	0x1f, r25	; 31
+    3e3e:	8e bb       	out	0x1e, r24	; 30
+    3e40:	2d bb       	out	0x1d, r18	; 29
+    3e42:	0f b6       	in	r0, 0x3f	; 63
+    3e44:	f8 94       	cli
+    3e46:	e2 9a       	sbi	0x1c, 2	; 28
+    3e48:	e1 9a       	sbi	0x1c, 1	; 28
+    3e4a:	0f be       	out	0x3f, r0	; 63
+    3e4c:	01 96       	adiw	r24, 0x01	; 1
+    3e4e:	08 95       	ret
+
+00003e50 <_exit>:
+    3e50:	f8 94       	cli
+
+00003e52 <__stop_program>:
+    3e52:	ff cf       	rjmp	.-2      	; 0x3e52 <__stop_program>

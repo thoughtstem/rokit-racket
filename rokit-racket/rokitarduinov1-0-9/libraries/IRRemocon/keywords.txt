@@ -1,0 +1,36 @@
+#######################################
+# Syntax Coloring Map IRRemocon
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+IRRemocon	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+update	KEYWORD2
+read	kEYWORD2
+attachCallback	KEYWORD2
+channelPins	KEYWORD2
+receiverPin	KEYWORD2
+rokitSetup	KEYWORD2
+callback	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+KEY_UP	LITERAL1
+KEY_U	LITERAL1
+KEY_D	LITERAL1
+KEY_L	LITERAL1
+KEY_R	LITERAL1
+KEY_1	LITERAL1
+KEY_2	LITERAL1
+KEY_3	LITERAL1
+KEY_4	LITERAL1
+KEY_5	LITERAL1
+KEY_6	LITERAL1
+

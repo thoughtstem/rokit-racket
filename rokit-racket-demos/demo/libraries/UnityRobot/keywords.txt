@@ -1,0 +1,51 @@
+#######################################
+# Syntax Coloring Map For UnityRobot
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+UnityRobot	KEYWORD1
+DigitalModule	KEYWORD1
+ADCModule	KEYWORD1
+PWMModule	KEYWORD1
+ServoModule	KEYWORD1
+MotorModule KEYWORD1
+ToneModule	KEYWORD1
+WheelController	KEYWORD1
+PanTiltController	KEYWORD1
+ForceFeedback	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+attachSerial	KEYWORD2
+begin	KEYWORD2
+process	KEYWORD2
+select	KEYWORD2
+flush	KEYWORD2
+attach	KEYWORD2
+detach	KEYWORD2
+push	KEYWORD2
+pop		KEYWORD2
+
+begin	KEYWORD2
+reset	KEYWORD2
+update	KEYWORD2
+action	KEYWORD2
+updated	KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+CMD_START	LITERAL1
+CMD_EXIT	LITERAL1
+CMD_UPDATE	LITERAL1
+CMD_ACTION	LITERAL1
+CMD_READY	LITERAL1
+CMD_PING	LITERAL1

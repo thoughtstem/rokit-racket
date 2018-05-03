@@ -1,0 +1,1 @@
+("6.9" ("c56ab465827cfe3058b92f38191ec17f061c7517" . "51fd60d7e0ac8ae236a14e90797c2a6f7ebedd8e") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt") (collects #"rokit-racket" #"arduino-compile.rkt") (collects #"rokit-racket" #"arduino-lang.rkt"))
