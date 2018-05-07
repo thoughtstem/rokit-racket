@@ -14,8 +14,8 @@
 (define serial-port 
   (match (system-type 'os)
     ('macosx    "cu.usbserial-AI046LB6")
-    ('unix      "/dev/ttyUSB0")
-    ('windows   "/dev/ttyUSB0")))
+    ('unix      "ttyUSB0")
+    ('windows   "ttyUSB0")))
 
 (define arduino-executable 
   (match (system-type 'os)
