@@ -1,0 +1,7 @@
+#lang rokit-racket
+
+(define (setup)
+  (digitalWrite 13 HIGH)
+  (digitalWrite 14 HIGH)
+  (digitalWrite 15 HIGH)
+  (digitalWrite 16 HIGH))

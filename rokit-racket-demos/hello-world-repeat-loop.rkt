@@ -1,11 +1,11 @@
 #lang rokit-racket
 
 (define (setup)
-  (SmartInventor.DCMotorUse))
+  (enable-motors))
 
 (define (loop)
   (repeat 2
-          (SmartInventor.DCMove right 50)
+          (move right 50)
           (delay 1000)))
 
  

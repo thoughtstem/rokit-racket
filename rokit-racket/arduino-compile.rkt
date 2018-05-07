@@ -6,7 +6,7 @@
 (require racket-to/processing
          setup/dirs)
 
-(define arduino-executable
+(define arduino-executable 
   (match (system-type 'os)
     ('macosx    "/Applications/Arduino.app/Contents/MacOS/Arduino")
     ('unix      "arduino")
