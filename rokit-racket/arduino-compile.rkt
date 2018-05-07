@@ -4,7 +4,18 @@
          set-package-path!)
 
 (require racket-to/processing
-         setup/dirs)
+         setup/dirs
+         "./prefs.rkt")
+
+;This will 100% NOT work on most computers,
+;  need to investigate how to find the right port on various
+;  systems.  Need to also figure out how to let the user
+;  configure it.  (Or better yet, auto-detect...)
+(define serial-port 
+  (match (system-type 'os)
+    ('macosx    "cu.usbserial-AI046LB6")
+    ('unix      "/dev/ttyUSB0")
+    ('windows   "/dev/ttyUSB0")))
 
 (define arduino-executable 
   (match (system-type 'os)
@@ -48,6 +59,10 @@
            package-path
            "rokitarduinov1-0-9/* demo/"))
 
+  (write-out-prefs (string-append package-path "rokitprefs.txt")
+                   (string-append package-path "rokitarduinov1-0-9")
+                   serial-port)
+  
   ;This too!!!
   (system (string-append
            arduino-executable

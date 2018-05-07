@@ -34,7 +34,7 @@
 
 (define (is-function? l)
   (and (list? l)
-       (> (length l) 2)
+       (>= (length l) 2)
        (eq? 'define (first l))
        (list? (second l))))
 
