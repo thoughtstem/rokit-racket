@@ -168,6 +168,9 @@
 (define-op py-div /)
 (define-op py-mod %)
 
+(define-op py-and and)
+(define-op py-or or)
+
 (define-identifier
   ;Bot directions
   forward
