@@ -8,6 +8,8 @@
                      [my-while while])
          upload
          repeat
+         turn
+         stop-motors
          (all-from-out "./arduino-compile.rkt"))
 
 (require "./arduino-compile.rkt")
@@ -23,11 +25,9 @@
  (send-to-arduino (check-program
                    (cons 'begin program))))
 
-
 (define (check-program p)
-  (ensure p (has-function? 'setup) "Your code must have a function named setup - e.g. (define (setup) ...)." )
-  (ensure p (has-function? 'loop) "Your code must have a function named loop - e.g. (define (loop) ...)." )
-  p)
+  ;(displayln p)
+  (ensure-loop (ensure-setup p)))
 
 (define (function->name f)
   (first (second f)))
@@ -45,10 +45,82 @@
   (λ(p)
     (member name (map function->name (find-functions p)))))
 
+(define (check-loop p)
+  (displayln "CHECKING FOR LOOP")
+    (if ((has-function? 'loop) p)
+        (displayln "LOOP FOUND")
+        (displayln "NO LOOP")))
+
+(define (check-setup p)
+  (displayln "CHECKING FOR SEUTP")
+    (if ((has-function? 'setup) p)
+        (displayln "SETUP FOUND")
+        (displayln "NO SETUP")))
+
 (define (ensure p pred? error-msg)
   (and (not (pred? p))
        (raise error-msg)))
 
+(define (ensure-loop p)
+  (check-loop p)
+  (if ((has-function? 'loop) p)
+      p
+      (begin (displayln "ADDING LOOP")
+             (append p '((define (loop) )))
+             )))
+
+(define (ensure-setup p)
+  (check-setup p)
+  (if ((has-function? 'setup) p)
+      (ensure-motors p)
+      (begin (displayln "ADDING SETUP")
+             (append p `((define (setup) ,(enable-motors) )))
+             )))
+
+(define (function->header f)
+  (second f))
+
+(define (function->body f)
+  (drop f 2))
+
+(define (add-line-to-function f line)
+  `(define
+     ,(function->header f)
+     ,@(cons line (function->body f))
+     ))
+
+(define (add-line-to-function-named f-name line)
+  (lambda (program-part)
+    (if (or (not (is-function? program-part))
+            (not (eq? (function->name program-part) f-name)))
+        program-part
+        (add-line-to-function program-part line))
+    ))
+
+(module+ test
+  (define example-program
+    '(begin (define (setup)
+              (SmartInventor.DCMove forward 60)
+              (delay 2000)
+              (SmartInventor.DCMove right 60)
+              (delay 800)
+              (SmartInventor.DCMove forward 60)
+              (delay 2000)
+              (SmartInventor.DCMove stop 0))
+
+            (define (loop)
+              (println "hello world"))))
+
+  (map (add-line-to-function-named 'setup
+                                   (enable-motors))
+       example-program)
+  )
+
+(define (ensure-motors p)
+  (map (add-line-to-function-named 'setup
+                                   (enable-motors))
+       p))
+       
 (define (cons-end thing l)
   (reverse (cons thing (reverse l))))
 
@@ -139,7 +211,6 @@
              `(define name val))
 
            (set-program! (cons-end fun-def program ))
-           
            fun-def ))]))
 
 
@@ -337,7 +408,11 @@
 (define (repeat times . lines)
   `(begin ,@(mult-list times lines)))
 
+(define (turn direction speed)
+  (move direction speed))
 
+(define (stop-motors)
+  (move stop 0))
 
 
 
