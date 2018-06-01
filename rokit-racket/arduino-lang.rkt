@@ -10,12 +10,31 @@
          repeat
          turn
          stop-motors
+         LEFT-IR-PIN
+         CENTER-IR-PIN
+         RIGHT-IR-PIN
+         read-left-ir
+         read-center-ir
+         read-right-ir
          (all-from-out "./arduino-compile.rkt"))
 
 (require "./arduino-compile.rkt")
 
 (require (for-syntax racket))
 (require (for-syntax racket/syntax))
+
+(define LEFT-IR-PIN   19)
+(define CENTER-IR-PIN 20)
+(define RIGHT-IR-PIN  21)
+
+(define read-left-ir
+  '(analogRead 19))
+
+(define read-center-ir
+  '(analogRead 20))
+
+(define read-right-ir
+  '(analogRead 21))
 
 (define program '())
 (define (set-program! p)
@@ -26,7 +45,7 @@
                    (cons 'begin program))))
 
 (define (check-program p)
-  ;(displayln p)
+  (displayln p)
   (ensure-loop (ensure-setup p)))
 
 (define (function->name f)
@@ -44,7 +63,7 @@
 (define (has-function? name)
   (λ(p)
     (member name (map function->name (find-functions p)))))
-
+  
 (define (check-loop p)
   (displayln "CHECKING FOR LOOP")
     (if ((has-function? 'loop) p)
@@ -72,10 +91,22 @@
 (define (ensure-setup p)
   (check-setup p)
   (if ((has-function? 'setup) p)
-      (ensure-motors p)
+      (ensure-inputs (ensure-motors p))
       (begin (displayln "ADDING SETUP")
-             (append p `((define (setup) ,(enable-motors) )))
+             (ensure-inputs (append p `((define (setup) ,(enable-motors) ))))
              )))
+
+(define (ensure-inputs p)
+  (define pin-list
+    (remove-duplicates (map(curry list-ref (flatten p))
+                           (map add1 (indexes-of (flatten p)
+                                                 'digitalRead)))))
+  
+  (for/fold ([program p])
+            ([pin (reverse pin-list)])
+            (map (add-line-to-function-named 'setup
+                                   (pin-mode pin INPUT))
+                 program)))
 
 (define (function->header f)
   (second f))
@@ -109,18 +140,33 @@
               (SmartInventor.DCMove stop 0))
 
             (define (loop)
-              (println "hello world"))))
+              (cond ((= (digitalRead LEFT-SENSOR-PIN) #f) (begin (SmartInventor.DCMove backward 50)
+                                                                 (delay 333)
+                                                                 (SmartInventor.DCMove right 50)
+                                                                 (delay 250)))
+                    ((= (digitalRead RIGHT-SENSOR-PIN) #f) (begin (SmartInventor.DCMove backward 50)
+                                                                  (delay 333)
+                                                                  (SmartInventor.DCMove left 50)
+                                                                  (delay 250)))
+                    (else                                  (begin (SmartInventor.DCMotor M1 CCW 50)
+                                                                  (SmartInventor.DCMotor M2 CW 50)))))))
 
-  (map (add-line-to-function-named 'setup
-                                   (enable-motors))
-       example-program)
-  )
+  (define pin-list
+    (remove-duplicates (map(curry list-ref (flatten example-program))
+                           (map add1 (indexes-of (flatten example-program)
+                                                 'digitalRead)))))
+  (for/fold ([p example-program])
+            ([i (reverse pin-list)])
+            (map (add-line-to-function-named 'setup
+                                   (pin-mode i INPUT))
+                 p))
+    )
 
 (define (ensure-motors p)
   (map (add-line-to-function-named 'setup
                                    (enable-motors))
        p))
-       
+        
 (define (cons-end thing l)
   (reverse (cons thing (reverse l))))
 
